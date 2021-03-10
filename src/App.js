@@ -3,12 +3,13 @@ import About from './components/About';
 import Contact from './components/Contact';
 import NotFound from './components/NotFound';
 import Navbar from './components/Navbar';
+import UserName from './components/Username';
 import { Switch, Route } from 'react-router-dom';
 
 const App = () => {
   return (
     <div>
-    <Navbar/>
+      <Navbar />
       {/* When we use Switch component as a wrapper it displays the first matched path. 
        When we use only div as a wrapper it displays all matches paths.
        But we can avoid form that using 'exact' property of Router.*/}
@@ -25,6 +26,9 @@ const App = () => {
         <Route path='/contact'>
           <Contact header='Drop a line' />
         </Route>
+        {/* component propery: when you want to render only one component without props */}
+        <Route path='/dynamic/:username' component={UserName} />
+
         <Route path='*'>
           <NotFound
             header='404 Not Found!'
